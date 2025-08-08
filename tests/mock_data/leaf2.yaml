@@ -1,0 +1,50 @@
+connect:
+  prompt: "Leaf2#"
+  commands:
+    term length 0: ""
+    term width 0: ""
+    terminal no monitor: ""
+    enable: ""
+    "": ""
+enable:
+  prompt: "Leaf2#"
+  commands:
+    show version: |
+      Cisco Nexus Operating System (NX-OS) Software
+      system:    version 9.3(9)
+      kickstart: version 9.3(9)
+      Device name: Leaf2
+    show bgp l2vpn evpn summary: |
+      BGP summary information for VRF default, address family L2VPN EVPN
+      BGP router identifier 10.1.2.2, local AS number 65000
+      Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+      10.0.0.11       4 65000     100     100        0    0    0 1d02h   11
+      10.0.0.21       4 65000     100     100        0    0    0 1d02h   12
+    show bgp l2vpn evpn route-type 2: |
+      EVPN Route Type 2 for VRF default
+      *  RD: 10.1.2.2:200  ESI: 0000.0000.0000.0000.0000  MAC: dddd.eeee.ffff  IP: 10.10.20.11
+      *  RD: 10.1.1.1:100  ESI: 0000.0000.0000.0000.0000  MAC: aaaa.bbbb.cccc  IP: 10.10.10.11
+    show bgp l2vpn evpn route-type 5: |
+      EVPN Route Type 5 for VRF default
+      *  RD: 10.1.2.2:200  Prefix: 10.200.0.0/24
+    show nve interface: |
+      Interface: nve1, State: Up, encapsulation VXLAN
+        Source-Interface: loopback0 (10.1.2.2)
+    show nve peers: |
+      Peer-IP       VNI    Src-IP      Peer-State Uptime
+      10.1.1.1      10010  10.1.2.2    Up         1d02h
+      10.1.1.3      10020  10.1.2.2    Up         1d02h
+    show nve vni: |
+      VNI: 10010  State: Up  Mcast: n/a  IR: Yes
+      VNI: 10020  State: Up  Mcast: n/a  IR: Yes
+    show ip arp vlan 10: |
+      IP ARP Table for VLAN 10
+      10.10.20.11  dddd.eeee.ffff  Vlan10  dynamic  00:10:18
+    show mac address-table vlan 10: |
+      VLAN     MAC Address       Type      age     Secure NTFY   Ports
+      10       dddd.eeee.ffff    dynamic   0       F      F      Eth1/3
+    configure terminal: ""
+configure:
+  prompt: "Leaf2(config)#"
+  commands:
+    end: ""

@@ -1,0 +1,31 @@
+testbed:
+  name: evpn_mock
+  credentials:
+    default:
+      username: admin
+      password: admin
+
+devices:
+  leaf1:
+    os: nxos
+    type: leaf
+    connections:
+      cli:
+        command: "mock_device_cli --os nxos --state connect --mock_data_dir tests/mock_data --mock_data_file leaf1.yaml"
+        protocol: unknown
+
+  leaf2:
+    os: nxos
+    type: leaf
+    connections:
+      cli:
+        command: "mock_device_cli --os nxos --state connect --mock_data_dir tests/mock_data --mock_data_file leaf2.yaml"
+        protocol: unknown
+
+  spine1:
+    os: nxos
+    type: spine
+    connections:
+      cli:
+        command: "mock_device_cli --os nxos --state connect --mock_data_dir tests/mock_data --mock_data_file spine1.yaml"
+        protocol: unknown

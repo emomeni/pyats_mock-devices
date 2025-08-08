@@ -1,0 +1,12 @@
+testbed: testbed.yaml
+tests:
+  - device: leaf1
+    test:
+      - api:
+          method: parse
+          arguments:
+            command: "show bgp l2vpn evpn summary"
+          alias: bgp_sum
+      - verify:
+          expr: "all(n.get('state','').lower()=='established' for vrf in bgp_sum.get('vrf', {}).values() for n in vrf.get('neighbor', {}).values())"
+          msg: "All EVPN neighbors must be Established"

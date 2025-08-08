@@ -1,0 +1,14 @@
+connect:
+  prompt: "Leaf1#"
+  commands:
+    enable: ""
+enable:
+  prompt: "Leaf1#"
+  commands:
+    show bgp l2vpn evpn summary: |
+      BGP summary information for VRF default, address family L2VPN EVPN
+      BGP router identifier 10.1.1.1, local AS number 65000
+      Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+      10.0.0.11       4 65000     100     100        0    0    0 00:10:00  Idle
+    show nve vni: |
+      VNI: 10010  State: Down  Mcast: n/a  IR: Yes

@@ -1,0 +1,21 @@
+connect:
+  prompt: "Spine1#"
+  commands:
+    term length 0: ""
+    term width 0: ""
+    terminal no monitor: ""
+    enable: ""
+    "": ""
+enable:
+  prompt: "Spine1#"
+  commands:
+    show version: |
+      Cisco Nexus Operating System (NX-OS) Software
+      system:    version 9.3(9)
+      Device name: Spine1
+    show bgp l2vpn evpn summary: |
+      BGP summary information for VRF default, address family L2VPN EVPN
+      BGP router identifier 10.0.0.11, local AS number 65000
+      Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+      10.0.0.21       4 65000     100     100        0    0    0 1d02h   12
+      10.0.0.22       4 65000     100     100        0    0    0 1d02h   11
