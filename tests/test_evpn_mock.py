@@ -1,6 +1,10 @@
+import logging
+
 from pyats import aetest
 from genie.testbed import load
 from tests.helpers.validators import all_bgp_neighbors_established, vnis_active
+
+log = logging.getLogger(__name__)
 
 class CommonSetup(aetest.CommonSetup):
     @aetest.subsection
@@ -8,7 +12,10 @@ class CommonSetup(aetest.CommonSetup):
         self.parent.parameters['testbed'] = load(testbed) if isinstance(testbed, str) else testbed
         tb = self.parent.parameters['testbed']
         for dev in tb.devices.values():
-            dev.connect(log_stdout=False)
+            try:
+                dev.connect(log_stdout=False)
+            except Exception as exc:
+                log.error("Failed to connect to %s: %s", dev.name, exc)
 
 class BgpEvpnChecks(aetest.Testcase):
     @aetest.test
