@@ -4,8 +4,10 @@ This project shows how to use **pyATS/Genie** with **Unicon mock devices** to te
 
 ## Setup
 ```bash
-cd evpn-mock
-python3 -m venv .venv && source .venv/bin/activate
+git clone <repo url>
+cd pyats_mock-devices
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -14,6 +16,11 @@ pip install -r requirements.txt
 pyats run job jobs/basic_job.py
 # or
 pyats run testbed-file testbed.yaml tests/test_evpn_mock.py
+```
+
+## Run the unit tests
+```bash
+pytest
 ```
 
 ## Run the Blitz example
